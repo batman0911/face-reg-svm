@@ -249,8 +249,8 @@ clf, showimage(reshape(W,24,24))
 %%%%%%%%%%%%%%% 2.2 When traibning for different C values, compute W,b
 %%%%%%%%%%%%%%%     and visualize W as an image (see above)
 %%%%%%%%%%%%%%%
-%Call=[1000 100 10 1 .1 .01 .001 .0001 .00001];
-Call=[.001];
+Call=[1000 100 10 1 .1 .01 .001 .0001 .00001];
+%Call=[.001];
 accbest=-inf; 
 modelbest=[];
 for i=1:length(Call)
