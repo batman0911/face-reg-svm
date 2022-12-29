@@ -249,7 +249,8 @@ clf, showimage(reshape(W,24,24))
 %%%%%%%%%%%%%%% 2.2 When traibning for different C values, compute W,b
 %%%%%%%%%%%%%%%     and visualize W as an image (see above)
 %%%%%%%%%%%%%%%
-Call=[1000 100 10 1 .1 .01 .001 .0001 .00001];
+%Call=[1000 100 10 1 .1 .01 .001 .0001 .00001];
+Call=[.001];
 accbest=-inf; 
 modelbest=[];
 for i=1:length(Call)
@@ -328,7 +329,7 @@ fprintf('Training and validation accuracy estimated from W = "average image": %1
 
 %%%%%%%%%%%%%%% load test image
 %%%%%%%%%%%%%%%
-imgfname='img4.jpg';
+imgfname='img2.jpg';
 img=imread([imgpath '/' imgfname]);
 showimage(img), title(imgfname)
 gimg=mean(img,3);
@@ -402,11 +403,11 @@ indsel=find(conf>confthresh);
 
 %%%%%%%%%%%%%%% display detections above threshold after non-max suppression
 %%%%%%%%%%%%%%% 
-confthreshnms=1;
+confthreshnms=2;
 clf, showimage(img)
 indsel=find(nmsconf>confthreshnms);
 showbbox(nmsbbox(indsel,:),[1 1 0],regexp(num2str(nmsconf(indsel)'),'\d+\.\d+','match'));
-title(sprintf('%d NMS detections above threshold %1.3f',size(nmsbbox,1),confthreshnms),'FontSize',14)
+title(sprintf('%d NMS detections above threshold %1.3f, confthresh %1.3f',size(nmsbbox,1),confthreshnms, confthresh),'FontSize',14)
 % fprintf('press a key...'), pause, fprintf('\n')
 
 
